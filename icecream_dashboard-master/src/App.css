@@ -1,0 +1,198 @@
+:root {
+  --bg-soft-pink: #fff8f7;
+  --primary-pink: #ff4a8b;
+  --secondary-pink: #fff0f3;
+  --text-dark: #1a1a1a;
+  --text-gray: #666666;
+}
+
+body {
+  background-color: #edcbcb; /* ပုံရဲ့ အောက်ခြေမှာ မြင်ရတဲ့ blue border လိုမျိုး ဖြစ်အောင် background ခံထားခြင်း */
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.kiosk-container {
+  background-color: var(--bg-soft-pink);
+  width: 100%;
+  max-width: 550px;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Back Button Arrow */
+.back-circle-btn {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ff85a7;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.kiosk-header {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.kiosk-header h2 {
+  font-size: 28px;
+  color: var(--text-dark);
+  margin: 0 0 8px 0;
+  font-weight: 700;
+}
+
+.kiosk-header p {
+  color: var(--text-gray);
+  margin: 0;
+  font-size: 15px;
+}
+
+/* Display Screen Input */
+.display-screen {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.02);
+  margin-bottom: 16px;
+}
+
+.display-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  outline: none;
+}
+
+.text-pink {
+  color: var(--primary-pink);
+}
+
+.status-message {
+  text-align: center;
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  min-height: 20px;
+}
+
+/* Keypad Layout */
+.custom-keypad {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+  padding: 0 20px;
+}
+
+.keypad-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.keypad-row.grid-3col {
+  grid-template-columns: repeat(3, 1fr);
+  padding-right: calc(25% + 3px); /* 0 button နေရာချန်ဖို့ ညှိထားတာ */
+}
+
+.custom-keypad button {
+  background-color: var(--secondary-pink);
+  color: var(--primary-pink);
+  border: none;
+  font-size: 24px;
+  font-weight: 600;
+  padding: 16px 0;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(255, 74, 139, 0.05);
+}
+
+.custom-keypad button:active {
+  transform: scale(0.95);
+}
+
+/* Backspace Delete Button */
+.custom-keypad button.btn-backspace {
+  background-color: var(--primary-pink);
+  color: white;
+}
+
+/* Flavor Zone */
+.flavor-selection-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.flavor-selection-zone select,
+.flavor-selection-zone input {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Footer Control Actions */
+.kiosk-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.btn-secondary {
+  flex: 1;
+  background-color: var(--secondary-pink);
+  color: var(--primary-pink);
+  border: 1px solid #ffe1e6;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  flex: 1.3;
+  background-color: var(--primary-pink);
+  color: white;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 74, 139, 0.3);
+}
+
+.btn-primary:disabled, .btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
