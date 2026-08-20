@@ -165,19 +165,8 @@ function App() {
           setCurrentPath('/')
           setActiveStep('flavor')
         }}
-        onSuccess={async (orderData) => {
+        onSuccess={(orderData) => {
           setOrderSummary(orderData)
-
-          try {
-            const gateResponse = await fetch(endpoints.gate, {
-              method: 'POST',
-            })
-            const gateResult = await gateResponse.json()
-            console.log('Gate response:', gateResult)
-          } catch (error) {
-            console.error('Failed to open gate:', error)
-          }
-
           window.history.pushState({}, '', '/ordersuccess')
           setCurrentPath('/ordersuccess')
         }}

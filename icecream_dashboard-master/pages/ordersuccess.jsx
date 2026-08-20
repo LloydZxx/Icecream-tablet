@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './ordersuccess.css'
+import endpoints from '../Endpoints/endpoints'
 
 const OrderFlowContainer = ({ orderRef, flavor, accent, onContinue, memberId, icecreamAmount, requiredTokens, orderData }) => {
   // Steps: 'SUCCESS' -> 'PLACE_CUP' -> 'READY_START' -> 'DISPENSING' -> 'ENJOY'
@@ -142,9 +143,19 @@ const OrderFlowContainer = ({ orderRef, flavor, accent, onContinue, memberId, ic
     <div className="start-button-wrapper">
       <button 
         className="giant-start-btn" 
-        onClick={(e) => {
+        onClick={async (e) => {
           e.currentTarget.classList.add('is-clicked');
-          
+
+          try {
+            const gateResponse = await fetch(endpoints.gate, {
+              method: 'POST',
+            })
+            const gateResult = await gateResponse.json()
+            console.log('Gate response:', gateResult)
+          } catch (error) {
+            console.error('Failed to open gate:', error)
+          }
+
           // အန်နီမေးရှင်း ၃ စက္ကန့် (3000ms) ပြည့်မှ နောက်တစ်ဆင့်သွားမယ်
           setTimeout(() => {
             setCurrentStep('DISPENSING');
